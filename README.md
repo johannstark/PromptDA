@@ -1,4 +1,4 @@
-# Prompting Depth Anything for 4K Resolution Accurate Metric Depth Estimation
+# Prompting Depth Anything for 4K Resolution Accurate Metric Depth Estimation [Fork by Juan Esteban Camacho]
 ### [Project Page](https://promptda.github.io/) | [Paper](https://promptda.github.io/assets/main_paper_with_supp.pdf) | [Hugging Face Demo](https://huggingface.co/spaces/depth-anything/PromptDA) | [Interactive Results](https://promptda.github.io/interactive.html) | [Data](https://promptda.github.io/)
 
 > Prompting Depth Anything for 4K Resolution Accurate Metric Depth Estimation  
@@ -16,6 +16,10 @@
 
 ![teaser](assets/teaser.gif)
 
+## :whale: Container Setup [Custom for this repository]
+
+This repository provides a Docker container for running PromptDA. The container includes all necessary dependencies and configurations to run the model efficiently.
+Please refer to [container/README.md](container/README.md) for more details on how to set up and use the container.
 
 ## 🛠️ Installation
 
