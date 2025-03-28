@@ -1,0 +1,42 @@
+# Docker Compose file for the PromptDA container
+
+services:
+  custom-promptda:
+    build:
+      context: ..
+      dockerfile: container/Dockerfile
+      args:
+        - BUILDKIT_INLINE_CACHE=1
+    image: custom-promptda
+    container_name: promptda
+    restart: unless-stopped
+    entrypoint: ["/bin/bash"]
+    shm_size: '8gb'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      # Mount zip files for processing
+      - ../zips:/app/zips:rw
+      # Mount data folder for inputs/outputs
+      - ../data:/app/results:rw
+      # Mount cache folder for caching
+      - ../.hf_cache:/app/.cache:rw
+    environment:
+      # PyTorch optimization settings
+      - PYTHONUNBUFFERED=1
+      - OMP_NUM_THREADS=1
+      - PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:128
+      - TORCH_CUDNN_V8_API_ENABLED=1
+      - PYTORCH_NO_CUDA_MEMORY_CACHING=1
+    tty: true
+    stdin_open: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
