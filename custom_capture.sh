@@ -8,13 +8,13 @@ set -e
 # Check if at least one argument is provided
 if [ $# -lt 1 ]; then
     echo "Usage: ./process_capture.sh path/to/zip_file.zip"
-    echo "Example: ./process_capture.sh zips/8a0f6f3804.zip"
+    echo "Example: ./process_capture.sh zips/8a0A254as804.zip"
     exit 1
 fi
 
 # Assign input arguments
 ZIP_FILE=$1
-OUTPUT_DIR=./results  # Fixed output directory
+OUTPUT_DIR=./results/$ZIP_FILE  # Fixed output directory
 
 # Create output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
